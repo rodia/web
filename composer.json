@@ -15,15 +15,20 @@
         "laminas/laminas-development-mode": "^3.2",
         "laminas/laminas-mvc": "^3.1.1",
         "laminas/laminas-navigation": "^2.9",
-        "laminas/laminas-paginator": "^2.8"
+        "laminas/laminas-paginator": "^2.8",
+        "samsonasik/apigility-consumer": "^3.0",
+        "laminas/laminas-recaptcha": "^3.2",
+        "phpunit/phpunit": "^9.0"
     },
     "autoload": {
         "psr-4": {
+            "Admin\\": "module/Admin/src/",
             "Application\\": "module/Application/src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
+            "AdminTest\\": "module/Admin/test/",
             "ApplicationTest\\": "module/Application/test/"
         }
     },
@@ -37,7 +42,7 @@
             "@development-enable",
             "php bin/update-gitignore.php"
         ],
-        "serve": "php -S 0.0.0.0:8080 -t public",
-        "test": "phpunit"
+        "serve": "php -S 0.0.0.0:8888 -t public public/index.php",
+        "test": "vendor/bin/phpunit"
     }
 }
