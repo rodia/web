@@ -12,11 +12,12 @@
  * This should be an array of module namespaces used in the application.
  */
 return [
+    'Laminas\Mvc\Console',
     'Laminas\Paginator',
     'Laminas\Navigation',
     'Laminas\Router',
     'Laminas\Validator',
     'ApigilityConsumer',
-    'Application',
     'Admin',
+    'Application',
 ];

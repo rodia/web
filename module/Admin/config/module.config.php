@@ -1,11 +1,5 @@
 <?php
 
-/**
- * @see       https://github.com/laminas/laminas-mvc-skeleton for the canonical source repository
- * @copyright https://github.com/laminas/laminas-mvc-skeleton/blob/master/COPYRIGHT.md
- * @license   https://github.com/laminas/laminas-mvc-skeleton/blob/master/LICENSE.md New BSD License
- */
-
 declare(strict_types=1);
 
 namespace Admin;
@@ -17,7 +11,7 @@ use Laminas\ServiceManager\Factory\InvokableFactory;
 return [
     'router' => [
         'routes' => [
-            'admin' => [
+            'dashboard' => [
                 'type'    => Literal::class,
                 'options' => [
                     'route'    => '/admin',
@@ -27,7 +21,7 @@ return [
                     ],
                 ],
             ],
-            'dashboard' => [
+            'admin' => [
                 'type'    => Segment::class,
                 'options' => [
                     'route'    => '/admin[/:action]',
@@ -37,11 +31,32 @@ return [
                     ],
                 ],
             ],
+            'admin/login' => [
+                'type'    => Literal::class,
+                'options' => [
+                    'route'    => '/admin/login',
+                    'defaults' => [
+                        'controller' => Controller\LoginController::class,
+                        'action'     => 'index',
+                    ],
+                ],
+            ],
+            'login' => [
+                'type'    => Segment::class,
+                'options' => [
+                    'route'    => '/admin/login[/:action]',
+                    'defaults' => [
+                        'controller' => Controller\LoginController::class,
+                        'action'     => 'index',
+                    ],
+                ],
+            ],
         ],
     ],
     'controllers' => [
         'factories' => [
             Controller\IndexController::class => InvokableFactory::class,
+            Controller\LoginController::class => InvokableFactory::class,
         ],
     ],
     'view_manager' => [
@@ -52,7 +67,9 @@ return [
         'exception_template'       => 'error/index',
         'template_map' => [
             'admin/admin'       => __DIR__ . '/../view/layout/admin.phtml',
+            'admin/login'       => __DIR__ . '/../view/layout/login.phtml',
             'admin/index/index' => __DIR__ . '/../view/admin/index/index.phtml',
+            'admin/login/index' => __DIR__ . '/../view/admin/login/index.phtml',
         ],
         'template_path_stack' => [
             __DIR__ . '/../view',

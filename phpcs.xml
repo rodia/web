@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<ruleset name="Laminas Coding Standard">
-    <description>Laminas Coding Standard</description>
+<ruleset name="ADDStock Coding Standard">
+    <description>ADDStock Coding Standard</description>
 
     <!-- display progress -->
     <arg value="p"/>

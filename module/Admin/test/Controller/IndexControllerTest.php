@@ -1,11 +1,5 @@
 <?php
 
-/**
- * @see       https://github.com/laminas/laminas-mvc-skeleton for the canonical source repository
- * @copyright https://github.com/laminas/laminas-mvc-skeleton/blob/master/COPYRIGHT.md
- * @license   https://github.com/laminas/laminas-mvc-skeleton/blob/master/LICENSE.md New BSD License
- */
-
 declare(strict_types=1);
 
 namespace AdminTest\Controller;
@@ -18,10 +12,6 @@ class IndexControllerTest extends AbstractHttpControllerTestCase
 {
     public function setUp() : void
     {
-        // The module configuration should still be applicable for tests.
-        // You can override configuration here with test case specific values,
-        // such as sample view templates, path stacks, module_listener_options,
-        // etc.
         $configOverrides = [];
 
         $this->setApplicationConfig(ArrayUtils::merge(
@@ -34,23 +24,17 @@ class IndexControllerTest extends AbstractHttpControllerTestCase
 
     public function testIndexActionCanBeAccessed()
     {
-        $this->dispatch('/', 'GET');
+        $this->dispatch('/admin', 'GET');
         $this->assertResponseStatusCode(200);
         $this->assertModuleName('admin');
-        $this->assertControllerName(IndexController::class); // as specified in router's controller name alias
+        $this->assertControllerName(IndexController::class);
         $this->assertControllerClass('IndexController');
         $this->assertMatchedRouteName('admin');
     }
 
-    public function testIndexActionViewModelTemplateRenderedWithinLayout()
-    {
-        $this->dispatch('/admin', 'GET');
-        $this->assertQuery('.container .jumbotron');
-    }
-
     public function testInvalidRouteDoesNotCrash()
     {
-        $this->dispatch('/invalid/route', 'GET');
+        $this->dispatch('/admin/route', 'GET');
         $this->assertResponseStatusCode(404);
     }
 }
