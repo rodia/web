@@ -6,6 +6,7 @@ namespace Admin;
 
 use Laminas\Router\Http\Literal;
 use Laminas\Router\Http\Segment;
+use Laminas\Router\Http\Method;
 use Laminas\ServiceManager\Factory\InvokableFactory;
 
 return [
@@ -51,6 +52,26 @@ return [
                     ],
                 ],
             ],
+            'prepare' => [
+                'type'    => Literal::class,
+                'options' => [
+                    'route'    => '/admin/login/prepare',
+                    'defaults' => [
+                        'controller' => Controller\LoginController::class,
+                        'action'     => 'prepare',
+                    ],
+                ],
+            ],
+            'admin/login/prepare' => [
+                'type'    => Segment::class,
+                'options' => [
+                    'route'    => '/admin/login/prepare',
+                    'defaults' => [
+                        'controller' => Controller\LoginController::class,
+                        'action'     => 'prepare',
+                    ],
+                ],
+            ],
         ],
     ],
     'controllers' => [
@@ -66,10 +87,11 @@ return [
         'not_found_template'       => 'error/404',
         'exception_template'       => 'error/index',
         'template_map' => [
-            'admin/admin'       => __DIR__ . '/../view/layout/admin.phtml',
-            'admin/login'       => __DIR__ . '/../view/layout/login.phtml',
-            'admin/index/index' => __DIR__ . '/../view/admin/index/index.phtml',
-            'admin/login/index' => __DIR__ . '/../view/admin/login/index.phtml',
+            'admin/admin'         => __DIR__ . '/../view/layout/admin.phtml',
+            'admin/login'         => __DIR__ . '/../view/layout/login.phtml',
+            'admin/index/index'   => __DIR__ . '/../view/admin/index/index.phtml',
+            'admin/login/index'   => __DIR__ . '/../view/admin/login/index.phtml',
+            'admin/login/prepare' => __DIR__ . '/../view/admin/login/prepare.phtml',
         ],
         'template_path_stack' => [
             __DIR__ . '/../view',

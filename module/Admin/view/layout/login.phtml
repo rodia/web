@@ -1,0 +1,38 @@
+<?php
+/**
+ * @var Laminas\View\Renderer\PhpRenderer $this
+ */
+?>
+
+<?= $this->doctype() ?>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <?= $this->headTitle('ADDStock')->setSeparator(' - ')->setAutoEscape(false) ?>
+
+    <?= $this->headMeta()
+        ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+        ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+    ?>
+
+    <!-- Le styles -->
+    <?= $this->headLink([
+        'rel'  => 'shortcut icon',
+        'type' => 'image/vnd.microsoft.icon',
+        'href' => $this->basePath() . '/img/favicon.ico'
+    ])
+        ->prependStylesheet($this->basePath('admin/css/maruti-login.css'))
+        ->prependStylesheet($this->basePath('admin/css/bootstrap-responsive.min.css'))
+        ->prependStylesheet($this->basePath('admin/css/bootstrap.min.css'))
+    ?>
+</head>
+<body>
+<div id="loginbox">
+    <?= $this->content ?>
+</div>
+
+<?= $this->inlineScript()
+    ->prependFile($this->basePath('admin/js/maruti.login.js'))
+    ->prependFile($this->basePath('admin/js/jquery.min.js')) ?>
+</body>
+</html>
